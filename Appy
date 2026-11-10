@@ -1,0 +1,23 @@
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+import numpy as np
+import os
+from groq import Groq
+from dotenv import load_dotenv
+
+# Load API key securely
+load_dotenv()
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+if not GROQ_API_KEY:
+    st.error("🚨 API Key is missing! Set it in Streamlit Secrets or a .env file.")
+    st.stop()
+
+# Init Groq client
+client = Groq(api_key=GROQ_API_KEY)
+
+# Streamlit App UI
+st.set_page_config(page_title="Financial Copilot AI", page_icon="📊", layout="wide")
+st.title("📊 Financial Copilot AI – Scenario Planning & Strategic Insights")
+st.write("Upload financial data and enter a scenario prompt to simulate different projections!")
